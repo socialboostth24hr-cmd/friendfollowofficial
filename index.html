@@ -1,672 +1,51 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>รีวิวจากลูกค้า | Friend Follow</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-<style>
+<link rel="stylesheet" href="style.css">
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Prompt',sans-serif;
-}
-
-body{
-
-background:
-radial-gradient(circle at top left,#ffd6ea 0%,transparent 30%),
-radial-gradient(circle at bottom right,#ffe7f3 0%,transparent 30%),
-linear-gradient(180deg,#fff5fa,#ffeef7);
-
-overflow-x:hidden;
-min-height:100vh;
-color:#333;
-
-}
-
-/* SPARKLES */
-
-.sparkle{
-
-position:fixed;
-
-width:12px;
-height:12px;
-
-border-radius:50%;
-
-background:white;
-
-box-shadow:
-0 0 20px white;
-
-opacity:0.7;
-
-animation:
-sparkleFloat 5s infinite ease-in-out;
-
-z-index:0;
-
-}
-
-.sparkle:nth-child(1){
-top:10%;
-left:10%;
-}
-
-.sparkle:nth-child(2){
-top:20%;
-right:10%;
-animation-delay:1s;
-}
-
-.sparkle:nth-child(3){
-bottom:15%;
-left:15%;
-animation-delay:2s;
-}
-
-.sparkle:nth-child(4){
-bottom:10%;
-right:15%;
-animation-delay:3s;
-}
-
-@keyframes sparkleFloat{
-
-0%{
-transform:translateY(0px);
-}
-
-50%{
-transform:translateY(-12px);
-}
-
-100%{
-transform:translateY(0px);
-}
-
-}
-
-/* HERO */
-
-.hero{
-
-padding:
-70px 20px
-40px;
-
-text-align:center;
-
-position:relative;
-z-index:2;
-
-}
-
-.logo{
-
-width:140px;
-height:140px;
-
-margin:auto;
-margin-bottom:24px;
-
-border-radius:36px;
-
-padding:6px;
-
-background:white;
-
-box-shadow:
-0 18px 40px rgba(255,20,147,0.18);
-
-animation:
-logoFloat 4s infinite ease-in-out;
-
-}
-
-.logo img{
-
-width:100%;
-height:100%;
-
-object-fit:cover;
-
-border-radius:30px;
-
-}
-
-@keyframes logoFloat{
-
-0%{
-transform:translateY(0px);
-}
-
-50%{
-transform:translateY(-8px);
-}
-
-100%{
-transform:translateY(0px);
-}
-
-}
-
-.title{
-
-font-size:64px;
-font-weight:800;
-
-background:
-linear-gradient(
-180deg,
-#ff5eb5,
-#ff1493
-);
-
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-
-margin-bottom:14px;
-
-}
-
-.sub{
-
-font-size:18px;
-line-height:1.9;
-
-color:#666;
-
-max-width:720px;
-
-margin:auto;
-
-}
-
-/* LINE BUTTON */
-
-.lineWrap{
-
-display:flex;
-justify-content:center;
-
-margin-top:28px;
-
-}
-
-.lineBtn{
-
-display:flex;
-align-items:center;
-gap:12px;
-
-padding:
-18px 34px;
-
-border-radius:999px;
-
-background:
-linear-gradient(
-135deg,
-#06c755,
-#00e676
-);
-
-color:white;
-
-font-size:20px;
-font-weight:800;
-
-text-decoration:none;
-
-box-shadow:
-0 10px 28px rgba(0,200,83,0.28);
-
-transition:0.3s;
-
-animation:
-lineGlow 1.5s infinite alternate;
-
-}
-
-.lineBtn:hover{
-
-transform:
-scale(1.05);
-
-}
-
-@keyframes lineGlow{
-
-from{
-box-shadow:
-0 10px 28px rgba(0,200,83,0.22);
-}
-
-to{
-box-shadow:
-0 14px 38px rgba(0,230,118,0.45);
-}
-
-}
-
-/* STATS */
-
-.stats{
-
-max-width:1200px;
-
-margin:auto;
-
-padding:30px 20px;
-
-display:grid;
-
-grid-template-columns:
-repeat(auto-fit,minmax(220px,1fr));
-
-gap:18px;
-
-position:relative;
-z-index:2;
-
-}
-
-.statCard{
-
-background:
-rgba(255,255,255,0.72);
-
-backdrop-filter:blur(14px);
-
-border:
-1px solid rgba(255,255,255,0.7);
-
-padding:30px;
-
-border-radius:30px;
-
-text-align:center;
-
-box-shadow:
-0 12px 28px rgba(255,20,147,0.08);
-
-transition:0.3s;
-
-}
-
-.statCard:hover{
-
-transform:
-translateY(-8px);
-
-}
-
-.statNumber{
-
-font-size:42px;
-font-weight:800;
-
-color:#ff1493;
-
-margin-bottom:8px;
-
-}
-
-.statText{
-
-font-size:16px;
-font-weight:600;
-
-color:#666;
-
-}
-
-/* BANNER */
-
-.banner{
-
-max-width:1000px;
-
-margin:
-10px auto
-50px;
-
-padding:0 20px;
-
-position:relative;
-z-index:2;
-
-}
-
-.bannerBox{
-
-background:
-rgba(255,255,255,0.7);
-
-backdrop-filter:blur(14px);
-
-padding:14px;
-
-border-radius:34px;
-
-box-shadow:
-0 14px 32px rgba(255,20,147,0.10);
-
-}
-
-.bannerBox img{
-
-width:100%;
-
-display:block;
-
-border-radius:24px;
-
-}
-
-/* REVIEW TITLE */
-
-.reviewTitle{
-
-text-align:center;
-
-font-size:44px;
-font-weight:800;
-
-margin-bottom:26px;
-
-background:
-linear-gradient(
-180deg,
-#ff5eb5,
-#ff1493
-);
-
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-
-}
-
-/* REVIEW GRID */
-
-.grid{
-
-max-width:1200px;
-
-margin:auto;
-
-padding:
-0 20px
-120px;
-
-display:grid;
-
-grid-template-columns:
-repeat(auto-fit,minmax(260px,1fr));
-
-gap:20px;
-
-position:relative;
-z-index:2;
-
-}
-
-.reviewCard{
-
-background:
-rgba(255,255,255,0.72);
-
-backdrop-filter:blur(14px);
-
-border:
-1px solid rgba(255,255,255,0.7);
-
-padding:24px;
-
-border-radius:30px;
-
-box-shadow:
-0 12px 28px rgba(255,20,147,0.08);
-
-transition:0.3s;
-
-animation:
-floatCard 4s infinite ease-in-out;
-
-}
-
-.reviewCard:hover{
-
-transform:
-translateY(-8px)
-scale(1.03);
-
-}
-
-@keyframes floatCard{
-
-0%{
-transform:translateY(0px);
-}
-
-50%{
-transform:translateY(-6px);
-}
-
-100%{
-transform:translateY(0px);
-}
-
-}
-
-.reviewStars{
-
-font-size:20px;
-
-margin-bottom:12px;
-
-color:#ffb400;
-
-}
-
-.reviewText{
-
-font-size:15px;
-
-line-height:1.8;
-
-color:#555;
-
-margin-bottom:14px;
-
-}
-
-.reviewUser{
-
-font-size:14px;
-
-font-weight:700;
-
-color:#ff1493;
-
-}
-
-/* LIVE FEED */
-
-.liveFeed{
-
-position:fixed;
-
-left:16px;
-bottom:16px;
-
-background:
-rgba(255,255,255,0.88);
-
-backdrop-filter:blur(14px);
-
-padding:16px 18px;
-
-border-radius:24px;
-
-display:flex;
-align-items:center;
-gap:12px;
-
-box-shadow:
-0 12px 30px rgba(255,20,147,0.12);
-
-z-index:999;
-
-max-width:340px;
-
-}
-
-.liveDot{
-
-width:14px;
-height:14px;
-
-border-radius:50%;
-
-background:#ff1493;
-
-box-shadow:
-0 0 18px #ff1493;
-
-animation:
-liveGlow 1s infinite alternate;
-
-}
-
-@keyframes liveGlow{
-
-from{
-transform:scale(1);
-}
-
-to{
-transform:scale(1.2);
-}
-
-}
-
-.liveTitle{
-
-font-size:14px;
-font-weight:800;
-
-color:#ff1493;
-
-margin-bottom:4px;
-
-}
-
-.liveText{
-
-font-size:13px;
-
-line-height:1.7;
-
-color:#555;
-
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-.hero{
-padding:60px 18px 30px;
-}
-
-.logo{
-width:120px;
-height:120px;
-}
-
-.title{
-font-size:46px;
-}
-
-.sub{
-font-size:15px;
-line-height:1.8;
-}
-
-.stats{
-grid-template-columns:1fr 1fr;
-}
-
-.statCard{
-padding:22px;
-}
-
-.statNumber{
-font-size:30px;
-}
-
-.reviewTitle{
-font-size:34px;
-}
-
-.grid{
-padding:0 14px 120px;
-}
-
-.lineBtn{
-font-size:17px;
-padding:16px 22px;
-}
-
-.liveFeed{
-
-left:10px;
-right:10px;
-bottom:10px;
-
-max-width:none;
-
-}
-
-}
-
-</style>
 </head>
 
 <body>
 
+<!-- SPARKLES -->
+
 <div class="sparkle"></div>
 <div class="sparkle"></div>
 <div class="sparkle"></div>
 <div class="sparkle"></div>
+
+<!-- HERO -->
 
 <section class="hero">
 
 <div class="logo">
 
-<img src="https://raw.githubusercontent.com/socialboostth24hr-cmd/friendfollowofficial/91c5ace767a015c5fa737f545fc5a1278f645580/5447e78c-202d-4a4a-8282-d61feda25c20.jpg">
+<img src="https://raw.githubusercontent.com/socialboostth24hr-cmd/friendfollowofficial/687ffd6401d55a5632f369592f3f8924b51adaa3/logo.jpg">
 
 </div>
 
-<div class="title">
+<h1 class="title">
 รีวิวจากลูกค้า
-</div>
+</h1>
 
-<div class="sub">
+<p class="sub">
 
 รีวิวจากลูกค้าจริงกว่า 10,000+ ออเดอร์ ✨<br>
 อัปเดตงานไว ดูแลหลังการขาย พร้อมระบบติดตามออเดอร์อัตโนมัติ
 
-</div>
+</p>
 
 <div class="lineWrap">
 
@@ -684,45 +63,88 @@ class="lineBtn"
 
 </section>
 
+<!-- STATS -->
+
 <section class="stats">
 
 <div class="statCard">
-<div class="statNumber">10K+</div>
-<div class="statText">ออเดอร์</div>
+
+<div class="statNumber">
+10K+
+</div>
+
+<div class="statText">
+ออเดอร์
+</div>
+
 </div>
 
 <div class="statCard">
-<div class="statNumber">4.9★</div>
-<div class="statText">คะแนนรีวิว</div>
+
+<div class="statNumber">
+4.9★
+</div>
+
+<div class="statText">
+คะแนนรีวิว
+</div>
+
 </div>
 
 <div class="statCard">
-<div class="statNumber">24Hr</div>
-<div class="statText">ดูแลตลอด</div>
+
+<div class="statNumber">
+24Hr
+</div>
+
+<div class="statText">
+ดูแลตลอด
+</div>
+
 </div>
 
 <div class="statCard">
-<div class="statNumber">100%</div>
-<div class="statText">รีวิวจริง</div>
+
+<div class="statNumber">
+100%
+</div>
+
+<div class="statText">
+รีวิวจริง
+</div>
+
 </div>
 
 </section>
+
+<!-- REVIEW IMAGE -->
 
 <section class="banner">
 
 <div class="bannerBox">
 
-<img src="https://raw.githubusercontent.com/socialboostth24hr-cmd/friendfollowofficial/aa3038dc4d7e40f49478ce1666ff06fab360b77b/714763ab-b122-4805-ae83-0971e305d052.jpg">
+<img src="https://raw.githubusercontent.com/socialboostth24hr-cmd/friendfollowofficial/687ffd6401d55a5632f369592f3f8924b51adaa3/reviews.jpg">
 
 </div>
 
 </section>
 
+<!-- REVIEW TITLE -->
+
 <div class="reviewTitle">
 รีวิวจากลูกค้าหลังใช้บริการ ✨
 </div>
 
-<section class="grid" id="reviewGrid"></section>
+<!-- REVIEW GRID -->
+
+<section
+class="grid"
+id="reviewGrid"
+
+
+</section>
+
+<!-- LIVE FEED -->
 
 <div class="liveFeed">
 
@@ -734,174 +156,21 @@ class="lineBtn"
 Live Activity
 </div>
 
-<div class="liveText" id="liveText">
+<div
+class="liveText"
+id="liveText"
+
+
 กำลังโหลด...
-</div>
 
 </div>
 
 </div>
 
-<script>
-
-const reviews = [
-
-"ยอดขึ้นไวมาก งานละเอียดสุดๆ 💖",
-"ระบบดูดีมาก เช็คสถานะได้จริง ✨",
-"ตอบเร็ว งานไว ประทับใจมาก",
-"ยอดขึ้นจริง ร้านนี้แนะนำเลย",
-"ระบบดูโปรมาก น่าเชื่อถือ",
-"ส่งงานเร็วมากกก 💕",
-"มีประกันด้วย ชอบมาก",
-"แอดมินตอบไวสุดๆ",
-"งานละเอียด ดูแลดี",
-"สั่งหลายรอบแล้วไม่ผิดหวัง",
-"ยอดขึ้นธรรมชาติมาก",
-"แพ็คเกจคุ้มมาก ✨",
-"มีหน้าเช็คออเดอร์ด้วย ดูดีมาก",
-"งานไวกว่าเดิมเยอะ",
-"ชอบระบบติดตามงาน 💖",
-"บริการดีมากกก",
-"ร้านดูมืออาชีพสุดๆ",
-"ตอบไว งานไม่ช้า",
-"ราคาดีมากเมื่อเทียบกับคุณภาพ",
-"แนะนำร้านนี้เลย ✨"
-
-];
-
-const users = [
-
-"@fx4x***",
-"@nx_9***",
-"@pxl***",
-"@qz8***",
-"@lmx***",
-"@vxq***",
-"@tpx***",
-"@f9x***",
-"@mrx***",
-"@uxz***",
-"@kkx***",
-"@zpx***",
-"@yqv***",
-"@txm***",
-"@rxx***",
-"@p9l***",
-"@fqa***",
-"@lzm***",
-"@mxp***",
-"@vtx***"
-
-];
-
-let html = "";
-
-for(let i=0; i<20; i++){
-
-html += `
-
-<div class="reviewCard">
-
-<div class="reviewStars">
-★★★★★
 </div>
 
-<div class="reviewText">
-${reviews[i]}
-</div>
-
-<div class="reviewUser">
-${users[i]}
-</div>
-
-</div>
-
-`;
-
-}
-
-document.getElementById(
-"reviewGrid"
-).innerHTML = html;
-
-const liveData = [
-
-{
-name:"fx4x***",
-order:"FF-4X2X-98X9",
-status:"🩷 ชำระเงินแล้ว",
-time:"2 นาทีที่แล้ว"
-},
-
-{
-name:"nx_9***",
-order:"FF-8X1X-21X8",
-status:"⚙️ กำลังดำเนินการ",
-time:"5 นาทีที่แล้ว"
-},
-
-{
-name:"pxl***",
-order:"FF-7X5X-63X1",
-status:"✅ เสร็จงานแล้ว",
-time:"8 นาทีที่แล้ว"
-},
-
-{
-name:"qz8***",
-order:"FF-2X8X-77X2",
-status:"🩷 รอดำเนินการ",
-time:"12 นาทีที่แล้ว"
-},
-
-{
-name:"lmx***",
-order:"FF-5X1X-33X9",
-status:"✅ เสร็จงานแล้ว",
-time:"15 นาทีที่แล้ว"
-}
-
-];
-
-function randomFeed(){
-
-const item =
-liveData[
-Math.floor(
-Math.random() *
-liveData.length
-)
-];
-
-document.getElementById(
-"liveText"
-).innerHTML =
-
-`
-คุณ ${item.name}<br>
-${item.order}<br>
-${item.status}<br>
-
-<span style="
-color:#999;
-font-size:12px;
-">
-
-${item.time}
-
-</span>
-`;
-
-}
-
-randomFeed();
-
-setInterval(
-randomFeed,
-9000
-);
-
-</script>
+<script src="script.js"></script>
 
 </body>
+
 </html>
