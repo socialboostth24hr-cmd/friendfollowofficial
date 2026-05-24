@@ -18,13 +18,16 @@ font-family:'Prompt',sans-serif;
 }
 
 body{
+
 background:
 radial-gradient(circle at top left,#ffc6df 0%,transparent 25%),
 radial-gradient(circle at bottom right,#ffdff1 0%,transparent 25%),
 linear-gradient(180deg,#ffd8eb,#ffeef7,#fff8fc);
+
 min-height:100vh;
 overflow-x:hidden;
 color:#333;
+
 }
 
 /* SPARKLE */
@@ -38,6 +41,7 @@ border-radius:50%;
 box-shadow:0 0 18px white;
 animation:sparkleFloat 5s infinite ease-in-out;
 opacity:0.7;
+z-index:1;
 }
 
 .sparkle:nth-child(1){
@@ -84,33 +88,60 @@ transform:translateY(0px) scale(1);
 .hero{
 padding:80px 20px 50px;
 text-align:center;
+position:relative;
+z-index:2;
 }
 
 .logo{
-width:150px;
-height:150px;
+width:170px;
+height:170px;
 margin:auto;
-margin-bottom:24px;
-border-radius:40px;
+margin-bottom:28px;
+border-radius:46px;
 overflow:hidden;
-padding:6px;
+padding:7px;
 background:white;
-box-shadow:0 18px 40px rgba(255,20,147,0.18);
+box-shadow:
+0 18px 45px rgba(255,20,147,0.20);
+animation:logoFloat 4s infinite ease-in-out;
+}
+
+@keyframes logoFloat{
+
+0%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-8px);
+}
+
+100%{
+transform:translateY(0px);
+}
+
 }
 
 .logo img{
 width:100%;
 height:100%;
 object-fit:cover;
-border-radius:34px;
+border-radius:38px;
 }
 
 h1{
-font-size:68px;
+font-size:72px;
 font-weight:800;
-line-height:1.1;
-margin-bottom:14px;
-background:linear-gradient(180deg,#ff6eb9,#ff1493);
+line-height:1.05;
+margin-bottom:18px;
+
+background:
+linear-gradient(
+180deg,
+#ff6eb9,
+#ff1493
+);
+
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
@@ -119,7 +150,7 @@ background:linear-gradient(180deg,#ff6eb9,#ff1493);
 color:#777;
 font-size:18px;
 line-height:1.9;
-max-width:700px;
+max-width:760px;
 margin:auto;
 }
 
@@ -127,30 +158,46 @@ margin:auto;
 
 .stats{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
 gap:18px;
 padding:30px 20px;
-max-width:1100px;
+max-width:1200px;
 margin:auto;
+position:relative;
+z-index:2;
 }
 
 .statCard{
+
 background:
 linear-gradient(
 180deg,
-rgba(255,255,255,0.95),
+rgba(255,255,255,0.96),
 rgba(255,248,252,0.92)
 );
-padding:30px;
-border-radius:30px;
+
+padding:32px;
+border-radius:32px;
 text-align:center;
+
 backdrop-filter:blur(14px);
-border:1px solid rgba(255,255,255,0.7);
-box-shadow:0 14px 28px rgba(255,20,147,0.08);
+
+border:
+1px solid rgba(255,255,255,0.7);
+
+box-shadow:
+0 14px 28px rgba(255,20,147,0.08);
+
+transition:0.3s;
+
+}
+
+.statCard:hover{
+transform:translateY(-6px);
 }
 
 .statNumber{
-font-size:38px;
+font-size:42px;
 font-weight:800;
 color:#ff1493;
 margin-bottom:10px;
@@ -161,116 +208,230 @@ color:#666;
 font-weight:600;
 }
 
-/* REVIEW GRID */
+/* REVIEWS */
+
+.reviewTitle{
+
+text-align:center;
+
+font-size:48px;
+
+font-weight:800;
+
+margin-top:40px;
+margin-bottom:20px;
+
+background:
+linear-gradient(
+180deg,
+#ff6eb9,
+#ff1493
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+}
 
 .grid{
+
 max-width:1200px;
+
 margin:auto;
-padding:30px 20px 100px;
+
+padding:20px 20px 100px;
+
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+grid-template-columns:
+repeat(auto-fit,minmax(280px,1fr));
+
 gap:22px;
+
+position:relative;
+z-index:2;
+
 }
 
 .reviewCard{
+
 background:
 linear-gradient(
 180deg,
 rgba(255,255,255,0.95),
 rgba(255,248,252,0.92)
 );
+
 border-radius:34px;
-overflow:hidden;
-box-shadow:0 14px 28px rgba(255,20,147,0.08);
+
+padding:24px;
+
+box-shadow:
+0 14px 28px rgba(255,20,147,0.08);
+
 transition:0.3s;
+
+border:
+1px solid rgba(255,255,255,0.7);
+
+backdrop-filter:blur(12px);
+
 }
 
 .reviewCard:hover{
-transform:translateY(-6px);
-}
 
-.reviewCard img{
-width:100%;
-display:block;
-}
+transform:
+translateY(-6px);
 
-.reviewContent{
-padding:22px;
 }
 
 .reviewStars{
+
 color:#ffb400;
+
 font-size:20px;
-margin-bottom:10px;
+
+margin-bottom:14px;
+
 }
 
 .reviewText{
+
 color:#555;
+
 line-height:1.9;
-margin-bottom:14px;
+
+margin-bottom:16px;
+
+font-size:15px;
+
 }
 
 .reviewUser{
+
 color:#ff1493;
+
 font-weight:700;
+
+font-size:15px;
+
 }
 
 /* CTA */
 
 .cta{
 text-align:center;
-padding:20px 20px 100px;
+padding:10px 20px 120px;
+position:relative;
+z-index:2;
 }
 
 .ctaBtn{
+
 display:inline-block;
-padding:20px 42px;
+
+padding:
+22px 46px;
+
 border-radius:999px;
-background:linear-gradient(135deg,#ff6eb9,#ff1493);
+
+background:
+linear-gradient(
+135deg,
+#ff6eb9,
+#ff1493
+);
+
 color:white;
+
 text-decoration:none;
+
 font-size:20px;
+
 font-weight:800;
-box-shadow:0 16px 30px rgba(255,20,147,0.18);
+
+box-shadow:
+0 16px 30px rgba(255,20,147,0.18);
+
 transition:0.25s;
+
 }
 
 .ctaBtn:hover{
-transform:translateY(-4px);
+transform:translateY(-5px);
 }
 
 /* LIVE FEED */
 
 .liveFeed{
+
 position:fixed;
+
 left:20px;
 bottom:20px;
+
 z-index:9999;
+
 display:flex;
 align-items:center;
 gap:14px;
+
 background:
 linear-gradient(
 180deg,
-rgba(255,255,255,0.96),
-rgba(255,245,250,0.92)
+rgba(255,255,255,0.97),
+rgba(255,245,250,0.94)
 );
+
 padding:18px;
+
 border-radius:26px;
-min-width:300px;
-max-width:340px;
-backdrop-filter:blur(14px);
-border:1px solid rgba(255,255,255,0.7);
-box-shadow:0 14px 32px rgba(255,20,147,0.14);
+
+min-width:310px;
+max-width:350px;
+
+backdrop-filter:blur(16px);
+
+border:
+1px solid rgba(255,255,255,0.7);
+
+box-shadow:
+0 14px 32px rgba(255,20,147,0.14);
+
+animation:
+livePopup 0.5s ease;
+
+}
+
+@keyframes livePopup{
+
+from{
+opacity:0;
+transform:translateY(20px);
+}
+
+to{
+opacity:1;
+transform:translateY(0px);
+}
+
 }
 
 .liveDot{
+
 width:16px;
 height:16px;
+
 border-radius:50%;
+
 background:#ff1493;
-box-shadow:0 0 16px #ff1493;
-animation:liveGlow 1s infinite alternate;
+
+box-shadow:
+0 0 16px #ff1493;
+
+animation:
+liveGlow 1s infinite alternate;
+
 }
 
 @keyframes liveGlow{
@@ -286,30 +447,114 @@ transform:scale(1.2);
 }
 
 .liveTitle{
+
 color:#ff1493;
+
 font-size:14px;
+
 font-weight:800;
+
 margin-bottom:4px;
+
 }
 
 .liveText{
+
 color:#555;
+
 line-height:1.7;
+
 font-size:14px;
+
 font-weight:600;
+
 }
 
+/* MOBILE */
+
 @media(max-width:768px){
+
+.hero{
+padding:60px 18px 30px;
+}
+
+.logo{
+width:130px;
+height:130px;
+border-radius:34px;
+}
+
+.logo img{
+border-radius:28px;
+}
 
 h1{
 font-size:48px;
 }
 
+.sub{
+font-size:15px;
+line-height:1.8;
+padding:0 8px;
+}
+
+.reviewTitle{
+font-size:36px;
+}
+
+.stats{
+grid-template-columns:1fr 1fr;
+gap:14px;
+padding:20px 14px;
+}
+
+.statCard{
+padding:22px;
+border-radius:24px;
+}
+
+.statNumber{
+font-size:30px;
+}
+
+.grid{
+padding:20px 14px 120px;
+gap:18px;
+}
+
+.reviewCard{
+border-radius:28px;
+padding:20px;
+}
+
+.reviewText{
+font-size:14px;
+}
+
+.ctaBtn{
+width:100%;
+max-width:340px;
+font-size:18px;
+padding:18px 20px;
+}
+
 .liveFeed{
+
 left:10px;
 right:10px;
 bottom:10px;
+
+min-width:auto;
 max-width:none;
+
+padding:16px;
+
+border-radius:22px;
+
+}
+
+.liveText{
+font-size:13px;
 }
 
 }
@@ -328,7 +573,7 @@ max-width:none;
 
 <div class="logo">
 
-<img src="https://raw.githubusercontent.com/socialboostth24hr-cmd/friendfollowofficial/91c5ace767a015c5fa737f545fc5a1278f645580/5447e78c-202d-4a4a-8282-d61feda25c20.jpg">
+<img src="https://raw.githubusercontent.com/socialboostth24hr-cmd/friendfollowofficial/aa3038dc4d7e40f49478ce1666ff06fab360b77b/714763ab-b122-4805-ae83-0971e305d052.jpg">
 
 </div>
 
@@ -370,75 +615,11 @@ Reviews
 
 </section>
 
-<section class="grid">
-
-<div class="reviewCard">
-
-<img src="https://placehold.co/600x700/png">
-
-<div class="reviewContent">
-
-<div class="reviewStars">
-★★★★★
+<div class="reviewTitle">
+Customer Reviews ✨
 </div>
 
-<div class="reviewText">
-ยอดขึ้นไวมาก งานละเอียด ตอบเร็ว ประทับใจสุดๆ 💖
-</div>
-
-<div class="reviewUser">
-@fx4xxk
-</div>
-
-</div>
-
-</div>
-
-<div class="reviewCard">
-
-<img src="https://placehold.co/600x700/png">
-
-<div class="reviewContent">
-
-<div class="reviewStars">
-★★★★★
-</div>
-
-<div class="reviewText">
-ระบบดูดีมาก มีหน้าเช็คสถานะด้วย ดูน่าเชื่อถือ ✨
-</div>
-
-<div class="reviewUser">
-@nxx_91
-</div>
-
-</div>
-
-</div>
-
-<div class="reviewCard">
-
-<img src="https://placehold.co/600x700/png">
-
-<div class="reviewContent">
-
-<div class="reviewStars">
-★★★★★
-</div>
-
-<div class="reviewText">
-ส่งงานไวมาก ยอดขึ้นจริง แนะนำร้านนี้เลย 💕
-</div>
-
-<div class="reviewUser">
-@pxl4rq
-</div>
-
-</div>
-
-</div>
-
-</section>
+<section class="grid" id="reviewGrid"></section>
 
 <section class="cta">
 
@@ -473,6 +654,88 @@ Live Activity
 
 <script>
 
+const reviews = [
+
+"ยอดขึ้นไวมาก งานละเอียดสุดๆ 💖",
+"ระบบดูดีมาก เช็คสถานะได้จริง ✨",
+"ตอบเร็ว งานไว ประทับใจมาก",
+"ยอดขึ้นจริง ร้านนี้แนะนำเลย",
+"ระบบดูโปรมาก น่าเชื่อถือ",
+"ส่งงานเร็วมากกก 💕",
+"มีประกันด้วย ชอบมาก",
+"แอดมินตอบไวสุดๆ",
+"งานละเอียด ดูแลดี",
+"สั่งหลายรอบแล้วไม่ผิดหวัง",
+"ยอดขึ้นธรรมชาติมาก",
+"แพ็คเกจคุ้มมาก ✨",
+"มีหน้าเช็คออเดอร์ด้วย ดูดีมาก",
+"งานไวกว่าเดิมเยอะ",
+"ชอบระบบติดตามงาน 💖",
+"บริการดีมากกก",
+"ร้านดูมืออาชีพสุดๆ",
+"ตอบไว งานไม่ช้า",
+"ราคาดีมากเมื่อเทียบกับคุณภาพ",
+"แนะนำร้านนี้เลย ✨"
+
+];
+
+const users = [
+
+"@fx4xxk",
+"@nxx_91",
+"@pxl4rq",
+"@qz8x_t",
+"@lmx_77",
+"@vxq_22",
+"@tpx_88",
+"@f9x_q",
+"@mrx_11",
+"@uxz_55",
+"@kkx_77",
+"@zpx_12",
+"@yqv_81",
+"@txm_44",
+"@rxx_31",
+"@p9l_x",
+"@fqa_22",
+"@lzm_98",
+"@mxp_87",
+"@vtx_90"
+
+];
+
+let html = "";
+
+for(let i=0; i<20; i++){
+
+html += `
+
+<div class="reviewCard">
+
+<div class="reviewStars">
+★★★★★
+</div>
+
+<div class="reviewText">
+${reviews[i]}
+</div>
+
+<div class="reviewUser">
+${users[i]}
+</div>
+
+</div>
+
+`;
+
+}
+
+document.getElementById(
+"reviewGrid"
+).innerHTML = html;
+
+// LIVE FEED
+
 const liveData = [
 
 {
@@ -501,6 +764,13 @@ name:"qz8x_t",
 order:"FF-2X8X-77X2",
 status:"🩷 รอดำเนินการ",
 time:"12 นาทีที่แล้ว"
+},
+
+{
+name:"lmx_77",
+order:"FF-5X1X-33X9",
+status:"✅ เสร็จงานแล้ว",
+time:"15 นาทีที่แล้ว"
 }
 
 ];
