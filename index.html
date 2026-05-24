@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Friend Follow Reviews</title>
+<title>รีวิวจากลูกค้า | Friend Follow</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -27,6 +27,44 @@ linear-gradient(180deg,#ffd8eb,#ffeef7,#fff8fc);
 min-height:100vh;
 overflow-x:hidden;
 color:#333;
+
+}
+
+/* BACKGROUND GLOW */
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+top:-100px;
+left:-100px;
+
+width:320px;
+height:320px;
+
+background:
+rgba(255,255,255,0.35);
+
+filter:blur(90px);
+
+animation:
+bgMove 8s infinite alternate;
+
+z-index:0;
+
+}
+
+@keyframes bgMove{
+
+from{
+transform:translate(0px,0px);
+}
+
+to{
+transform:translate(120px,80px);
+}
 
 }
 
@@ -86,7 +124,7 @@ transform:translateY(0px) scale(1);
 /* HERO */
 
 .hero{
-padding:80px 20px 50px;
+padding:80px 20px 40px;
 text-align:center;
 position:relative;
 z-index:2;
@@ -103,7 +141,9 @@ padding:7px;
 background:white;
 box-shadow:
 0 18px 45px rgba(255,20,147,0.20);
-animation:logoFloat 4s infinite ease-in-out;
+
+animation:
+logoFloat 4s infinite ease-in-out;
 }
 
 @keyframes logoFloat{
@@ -130,6 +170,7 @@ border-radius:38px;
 }
 
 h1{
+
 font-size:72px;
 font-weight:800;
 line-height:1.05;
@@ -144,14 +185,82 @@ linear-gradient(
 
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
+
+text-shadow:
+0 0 20px rgba(255,20,147,0.25);
+
 }
 
 .sub{
-color:#777;
+color:#666;
 font-size:18px;
 line-height:1.9;
 max-width:760px;
 margin:auto;
+}
+
+/* LINE BUTTON */
+
+.lineWrap{
+display:flex;
+justify-content:center;
+margin-top:34px;
+}
+
+.lineBtn{
+
+display:flex;
+align-items:center;
+gap:12px;
+
+padding:20px 34px;
+
+border-radius:999px;
+
+background:
+linear-gradient(
+135deg,
+#00c73c,
+#00e676
+);
+
+color:white;
+
+text-decoration:none;
+
+font-size:20px;
+
+font-weight:800;
+
+box-shadow:
+0 0 20px rgba(0,230,118,0.5),
+0 12px 30px rgba(0,0,0,0.12);
+
+animation:
+lineGlow 1.5s infinite alternate;
+
+transition:0.3s;
+
+}
+
+.lineBtn:hover{
+transform:scale(1.05);
+}
+
+@keyframes lineGlow{
+
+from{
+transform:scale(1);
+box-shadow:
+0 0 18px rgba(0,230,118,0.45);
+}
+
+to{
+transform:scale(1.04);
+box-shadow:
+0 0 30px rgba(0,230,118,0.8);
+}
+
 }
 
 /* STATS */
@@ -190,10 +299,13 @@ box-shadow:
 
 transition:0.3s;
 
+animation:
+floatCard 4s ease-in-out infinite;
+
 }
 
 .statCard:hover{
-transform:translateY(-6px);
+transform:translateY(-8px);
 }
 
 .statNumber{
@@ -246,6 +358,9 @@ backdrop-filter:blur(14px);
 
 overflow:hidden;
 
+animation:
+floatCard 5s ease-in-out infinite;
+
 }
 
 .bannerBox img{
@@ -258,7 +373,7 @@ border-radius:28px;
 
 }
 
-/* REVIEWS */
+/* REVIEW TITLE */
 
 .reviewTitle{
 
@@ -283,13 +398,15 @@ linear-gradient(
 
 }
 
+/* REVIEW GRID */
+
 .grid{
 
 max-width:1200px;
 
 margin:auto;
 
-padding:20px 20px 100px;
+padding:20px 20px 120px;
 
 display:grid;
 
@@ -326,12 +443,47 @@ border:
 
 backdrop-filter:blur(12px);
 
+animation:
+floatCard 4s ease-in-out infinite;
+
+}
+
+.reviewCard:nth-child(2){
+animation-delay:0.4s;
+}
+
+.reviewCard:nth-child(3){
+animation-delay:0.8s;
+}
+
+.reviewCard:nth-child(4){
+animation-delay:1.2s;
+}
+
+@keyframes floatCard{
+
+0%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-8px);
+}
+
+100%{
+transform:translateY(0px);
+}
+
 }
 
 .reviewCard:hover{
 
 transform:
-translateY(-6px);
+translateY(-10px)
+scale(1.03);
+
+box-shadow:
+0 18px 40px rgba(255,20,147,0.16);
 
 }
 
@@ -365,50 +517,6 @@ font-weight:700;
 
 font-size:15px;
 
-}
-
-/* CTA */
-
-.cta{
-text-align:center;
-padding:10px 20px 120px;
-position:relative;
-z-index:2;
-}
-
-.ctaBtn{
-
-display:inline-block;
-
-padding:
-22px 46px;
-
-border-radius:999px;
-
-background:
-linear-gradient(
-135deg,
-#ff6eb9,
-#ff1493
-);
-
-color:white;
-
-text-decoration:none;
-
-font-size:20px;
-
-font-weight:800;
-
-box-shadow:
-0 16px 30px rgba(255,20,147,0.18);
-
-transition:0.25s;
-
-}
-
-.ctaBtn:hover{
-transform:translateY(-5px);
 }
 
 /* LIVE FEED */
@@ -450,6 +558,20 @@ box-shadow:
 
 animation:
 livePopup 0.5s ease;
+
+}
+
+@keyframes livePopup{
+
+from{
+opacity:0;
+transform:translateY(20px);
+}
+
+to{
+opacity:1;
+transform:translateY(0px);
+}
 
 }
 
@@ -525,7 +647,7 @@ border-radius:28px;
 }
 
 h1{
-font-size:48px;
+font-size:50px;
 }
 
 .sub{
@@ -567,11 +689,9 @@ padding:20px;
 font-size:14px;
 }
 
-.ctaBtn{
-width:100%;
-max-width:340px;
-font-size:18px;
-padding:18px 20px;
+.lineBtn{
+font-size:17px;
+padding:18px 22px;
 }
 
 .liveFeed{
@@ -614,8 +734,7 @@ font-size:13px;
 </div>
 
 <h1>
-Friend Follow<br>
-Reviews
+รีวิวจากลูกค้า
 </h1>
 
 <div class="sub">
@@ -625,28 +744,42 @@ Reviews
 
 </div>
 
+<div class="lineWrap">
+
+<a
+href="https://line.me/R/ti/p/@geg4960w"
+target="_blank"
+class="lineBtn"
+
+
+💬 Line : @geg4960w
+
+</a>
+
+</div>
+
 </section>
 
 <section class="stats">
 
 <div class="statCard">
 <div class="statNumber">10K+</div>
-<div class="statText">Orders</div>
+<div class="statText">ออเดอร์</div>
 </div>
 
 <div class="statCard">
 <div class="statNumber">4.9★</div>
-<div class="statText">Rating</div>
+<div class="statText">คะแนนรีวิว</div>
 </div>
 
 <div class="statCard">
 <div class="statNumber">24Hr</div>
-<div class="statText">Support</div>
+<div class="statText">ดูแลตลอด</div>
 </div>
 
 <div class="statCard">
 <div class="statNumber">100%</div>
-<div class="statText">Real Reviews</div>
+<div class="statText">รีวิวจริง</div>
 </div>
 
 </section>
@@ -662,23 +795,10 @@ Reviews
 </section>
 
 <div class="reviewTitle">
-Customer Reviews ✨
+รีวิวจากลูกค้าหลังใช้บริการ ✨
 </div>
 
 <section class="grid" id="reviewGrid"></section>
-
-<section class="cta">
-
-<a
-class="ctaBtn"
-href="#"
-
-
-✨ สร้างออเดอร์เลย
-
-</a>
-
-</section>
 
 <div class="liveFeed">
 
@@ -727,26 +847,26 @@ const reviews = [
 
 const users = [
 
-"@fx4xxk",
-"@nxx_91",
-"@pxl4rq",
-"@qz8x_t",
-"@lmx_77",
-"@vxq_22",
-"@tpx_88",
-"@f9x_q",
-"@mrx_11",
-"@uxz_55",
-"@kkx_77",
-"@zpx_12",
-"@yqv_81",
-"@txm_44",
-"@rxx_31",
-"@p9l_x",
-"@fqa_22",
-"@lzm_98",
-"@mxp_87",
-"@vtx_90"
+"@fx4x***",
+"@nx_9***",
+"@pxl***",
+"@qz8***",
+"@lmx***",
+"@vxq***",
+"@tpx***",
+"@f9x***",
+"@mrx***",
+"@uxz***",
+"@kkx***",
+"@zpx***",
+"@yqv***",
+"@txm***",
+"@rxx***",
+"@p9l***",
+"@fqa***",
+"@lzm***",
+"@mxp***",
+"@vtx***"
 
 ];
 
@@ -785,35 +905,35 @@ document.getElementById(
 const liveData = [
 
 {
-name:"fx4xxk",
+name:"fx4x***",
 order:"FF-4X2X-98X9",
 status:"🩷 ชำระเงินแล้ว",
 time:"2 นาทีที่แล้ว"
 },
 
 {
-name:"nxx_91",
+name:"nx_9***",
 order:"FF-8X1X-21X8",
 status:"⚙️ กำลังดำเนินการ",
 time:"5 นาทีที่แล้ว"
 },
 
 {
-name:"pxl4rq",
+name:"pxl***",
 order:"FF-7X5X-63X1",
 status:"✅ เสร็จงานแล้ว",
 time:"8 นาทีที่แล้ว"
 },
 
 {
-name:"qz8x_t",
+name:"qz8***",
 order:"FF-2X8X-77X2",
 status:"🩷 รอดำเนินการ",
 time:"12 นาทีที่แล้ว"
 },
 
 {
-name:"lmx_77",
+name:"lmx***",
 order:"FF-5X1X-33X9",
 status:"✅ เสร็จงานแล้ว",
 time:"15 นาทีที่แล้ว"
